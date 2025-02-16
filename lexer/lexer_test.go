@@ -57,19 +57,6 @@ func TestNextToken(t *testing.T) {
 		{token.RPAREN, ")"},
 		{token.SEMICOLON, ";"},
 		{token.EOF, ""},
-
-		// {token.PLUS, "+"},
-		// {token.MINUS, "-"},
-		// {token.MULT, "*"},
-		// {token.DIV, "/"},
-		// {token.EXP, "^"},
-		// {token.LPAREN, "("},
-		// {token.RPAREN, ")"},
-		// {token.LBRACE, "{"},
-		// {token.RBRACE, "}"},
-		// {token.COMMA, ","},
-		// {token.SEMICOLON, ";"},
-		// {token.EOF, ""},
 	}
 
 	l := New(input)

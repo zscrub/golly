@@ -86,22 +86,6 @@ func (l *Lexer) skipWhiteSpace() {
   }
 }
 
-// func (l *Lexer) readIdentifier() string {
-//     position := l.position
-//     for isLetter(l.ch) {
-//       l.readChar()
-//     }
-//     return l.input[position:l.position]
-// }
-
-// func (l *Lexer) readNumber() string {
-//   position := l.position
-//   for isDigit(l.ch) {
-//     l.readChar()
-//   }
-//   return l.input[position:l.position]
-// }
-
 func (l *Lexer) readIdentifier(checkIdentifier func(byte) bool) string {
   position := l.position
   for checkIdentifier(l.ch) {
