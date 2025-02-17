@@ -1,0 +1,4 @@
+github.com/zscrub/golly/lexer v0.0.0-20250217000543-75df7e8c5be8 h1:jmVTN+Z822dKcJ2Ddv3wAYbT5vzlpJtna9uuQ4KQPUY=
+github.com/zscrub/golly/lexer v0.0.0-20250217000543-75df7e8c5be8/go.mod h1:sI9GAkaZ2BqAmgTkkNIBt1orzZT/TNqla8adjz6kYG8=
+github.com/zscrub/golly/token v0.0.0-20250217000543-75df7e8c5be8 h1:4rU3Kjt4jjcJbDViCAj/7tIPS0jCgq3/94Y9OjkdtWs=
+github.com/zscrub/golly/token v0.0.0-20250217000543-75df7e8c5be8/go.mod h1:WI5X5xw6Sst92lBstaIILUZZOu2Nx2+ArM1oNVEddC4=
