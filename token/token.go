@@ -24,6 +24,11 @@ const (
   MULT    = "*"
   DIV     = "/"
   EXP     = "^"
+  BANG    = "!"
+  LT      = "<"
+  GT      = ">"
+  EQ      = "=="
+  NOT_EQ  = "!="
 
   // Delimiters
   COMMA     = ","
@@ -37,13 +42,25 @@ const (
   // Keywords
   VAR = "VAR"
   FN  = "FN"
+  IF  = "IF"
   // AND = "AND"
   // OR  = "OR"
+
+  RETURN = "RETURN"
+  ELSE   = "ELSE"
+
+  TRUE = "TRUE"
+  FALSE = "FALSE"
 )
 
 var keywords = map[string]TokenType{
   "fn": FN,
   "var": VAR,
+  "if": IF,
+  "else": ELSE,
+  "return": RETURN,
+  "true": TRUE,
+  "false": FALSE,
 }
 
 func LookupIdent(ident string) TokenType {
