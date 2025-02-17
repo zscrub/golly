@@ -25,14 +25,26 @@ func (l *Lexer) readChar() {
         l.readPosition += 1
 }
 
+
+func (l *Lexer) peekChar() byte {
+  if l.readPosition >= len(l.input) {
+    return 0
+  }
+
+  return l.input[l.readPosition]
+}
+
 func (l *Lexer) NextToken() token.Token {
         var tok token.Token
-
         l.skipWhiteSpace()
         
         switch l.ch {
         case '=':
-          tok = newToken(token.ASSIGN, l.ch)
+          if l.peekChar() == '=' {
+            tok = l.comparisonToken(token.EQ)
+          } else {
+            tok = newToken(token.ASSIGN, l.ch)
+          }
         case ';':
           tok = newToken(token.SEMICOLON, l.ch)
         case '(':
@@ -55,6 +67,16 @@ func (l *Lexer) NextToken() token.Token {
           tok = newToken(token.DIV, l.ch)
         case '^':
           tok = newToken(token.EXP, l.ch)
+        case '!':
+          if l.peekChar() == '=' {
+            tok = l.comparisonToken(token.NOT_EQ)
+          } else {
+            tok = newToken(token.BANG, l.ch)
+          }
+        case '<':
+          tok = newToken(token.LT, l.ch)
+        case '>':
+          tok = newToken(token.GT, l.ch)
         case 0:
           tok.Literal = ""
           tok.Type = token.EOF
@@ -78,6 +100,13 @@ func (l *Lexer) NextToken() token.Token {
 
 func newToken(tokenType token.TokenType, ch byte) token.Token {
         return token.Token{Type: tokenType, Literal: string(ch)}
+}
+
+func (l *Lexer) comparisonToken(tokenType token.TokenType) token.Token {
+  ch := l.ch
+  l.readChar()
+  literal := string(ch) + string(l.ch)
+  return token.Token{Type: tokenType, Literal: literal}
 }
 
 func (l *Lexer) skipWhiteSpace() {
